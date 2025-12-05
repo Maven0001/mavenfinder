@@ -56,28 +56,30 @@ const Hero = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center  justify-center bg-[url('/images/hero-img.png')] bg-cover bg-no-repeat bg-center h-[500px] mr-16 ml-16 mt-[57px] rounded-3xl">
-        <h1 className="text-white font-bold text-8xl text-center  w-[800px]">
-          Find events you'll love here
-        </h1>
-        <div className="flex gap-4 mt-16">
-          <div className="flex gap-3 bg-white w-[642px] h-[60px] p-6 items-center rounded-3xl">
-            <FaSearch className="h-6 w-6" />
-            <input
-              className="w-[642px] h-[60px] outline-none"
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Search events using location....."
-            />
+      <div className="w-full py-8 px-4 md:px-10 lg:px-20 ">
+        <div className="flex flex-col items-center w-full  justify-center bg-[url('/images/hero-img.png')] bg-cover bg-no-repeat bg-center md:h-[500px] rounded-3xl ">
+          <h1 className="text-white font-bold mt-7 text-4xl text-center md:text-8xl md:text-center  md:w-[800px]">
+            Find events you'll love here
+          </h1>
+          <div className="flex  items-center gap-1 mt-10 mb-10  md:gap-4 md:mt-16">
+            <div className="flex gap-1 md:gap-3 bg-white w-[230px] h-10 p-4 rounded-2xl md:w-[642px] md:h-[60px] md:p-6 items-center md:rounded-3xl">
+              <FaSearch className="h-10 w-10 md:h-6 md:w-6 text-gray-800" />
+              <input
+                className="w-xl md:w-[642px] md:h-[60px] outline-none placeholder:text-[12px] md:placeholder:text-xl "
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Search events using location....."
+              />
+            </div>
+            <button
+              onClick={handleSearch}
+              disabled={loading}
+              className="bg-indigo-500 hover:bg-indigo-600 cursor-pointer text-white text-sm w-[70px] h-10 rounded-2xl  md:text-2xl md:w-[140px]  md:h-[60px] md:p-3 md:rounded-3xl "
+            >
+              {loading ? "Searching..." : "Search"}
+            </button>
           </div>
-          <button
-            onClick={handleSearch}
-            disabled={loading}
-            className="bg-indigo-500 hover:bg-indigo-600 cursor-pointer text-white text-2xl w-[140px]  h-[60px] p-3 rounded-3xl "
-          >
-            {loading ? "Searching..." : "Search"}
-          </button>
         </div>
       </div>
       <SearchResult
