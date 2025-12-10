@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SearchResult = ({ results, error, loading, input }) => {
   return (
@@ -16,7 +16,7 @@ const SearchResult = ({ results, error, loading, input }) => {
       {!loading && results.length > 0 && (
         <div className=" px-4 md:px-10 lg:px-20">
           <h1 className="text-xl font-medium md:text-3xl">
-            Search results for events in{" "}
+            Search results for events in
             <span className="text-indigo-500">{input}</span>
           </h1>
           <div className="mt-4 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">
@@ -48,14 +48,12 @@ const SearchResult = ({ results, error, loading, input }) => {
                       </p>
                     )}
                   </div>
-                  <a
+                  <Link
                     className="px-8 py-2 border-2 border-indigo-500 rounded-full hover:bg-indigo-500 hover:text-black transition-colors duration-300 "
-                    href={result.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    to={"/event/${result.id}"}
                   >
                     Get Tickets
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}

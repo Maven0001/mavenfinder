@@ -9,10 +9,10 @@ const Hero = () => {
   const [error, setError] = useState("");
 
   const fetchData = async (value) => {
-    // if (!input.trim()) {
-    //   alert("Please enter a search");
-    //   return;
-    // }
+    if (!input.trim()) {
+      alert("Please enter a search");
+      return;
+    }
 
     setLoading(true);
     setError("");
@@ -34,7 +34,7 @@ const Hero = () => {
 
       const events = json._embedded?.events || [];
 
-      console.log("API Response:", json);
+      // console.log("API Response:", json);
 
       setResults(events);
     } catch (err) {
@@ -45,10 +45,10 @@ const Hero = () => {
     }
   };
 
-  const handleSearch = (value) => {
+  const handleSearch = () => {
     setInput(input);
     if (input.trim()) {
-      fetchData(value);
+      fetchData(input);
     } else {
       setResults([]);
     }
@@ -69,7 +69,7 @@ const Hero = () => {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Search events using location....."
+                placeholder="Search events using event names,artists..."
               />
             </div>
             <button
